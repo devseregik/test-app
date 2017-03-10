@@ -1,8 +1,14 @@
-// Dependenies
+// Dependencies
 import React from 'react';
+import { connect } from 'react-redux';
 
 // Blocks
 import { Genre, Year, Rating } from './blocks/Form/Form';
+import Form from './blocks/Form/Form';
+import Table from './blocks/Table/Table';
+
+// Styles
+import './App.styl';
 
 /**
  * Application class
@@ -14,23 +20,12 @@ class App extends React.Component {
      */
 	render() {
 		return (
-			<div className="ui two column stackable grid container">
-				<div className="column">
-			  		<div className="">
-					<form className="ui form">
-						<h4 className="ui dividing header">Добавление фильма</h4>
-						<div className="field">
-							<label>Название фильма</label>
-							<input type="text" placeholder="Название фильма" />
-						</div>
-						<Genre />
-						<Year from="1895" />
-						<Rating stars="5" />
-					</form>
-			  		</div>
+			<div className="ui two column stackable grid container sixteen wide">
+				<div className="column six wide">
+					<Form />
 				</div>
-				<div className="column">
-			  		<div className="">1</div>
+				<div className="column ten wide">
+					<Table />
 				</div>
 			</div>
 		);
@@ -38,4 +33,11 @@ class App extends React.Component {
 
 }
 
-export default App;
+export default connect(
+    state => ({
+        films: state
+    }),
+    dispatch => ({
+
+    })
+)(App)

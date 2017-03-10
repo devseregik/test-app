@@ -1,4 +1,4 @@
-// Dependenies
+// Dependencies
 import React from 'react';
 
 /**
@@ -29,7 +29,8 @@ class Genre extends React.Component {
 		return (
 			<div className="field">
 				<label>Жанр</label>
-				<select className="ui dropdown">
+				<select className="ui dropdown" name="genre">
+                     <option value="">Жанр фильма</option>
 					{
                         this.genres.map((label, i) => {
                             return <option key={ i }>{ label }</option>

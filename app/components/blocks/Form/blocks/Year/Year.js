@@ -1,4 +1,4 @@
-// Dependenies
+// Dependencies
 import React from 'react';
 import _ from 'underscore';
 
@@ -34,7 +34,8 @@ class Year extends React.Component {
 		return (
 			<div className="field">
 				<label>Год</label>
-				<select className="ui dropdown">
+				<select className="ui dropdown" name="year">
+                    <option value="">Год выхода</option>
 					{
                         _.range(fromYear, new Date().getFullYear() + 1).reverse().map((label, i) => {
                             return <option key={ i }>{ label }</option>
