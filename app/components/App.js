@@ -3,7 +3,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Blocks
-import { Genre, Year, Rating } from './blocks/Form/Form';
 import Form from './blocks/Form/Form';
 import Table from './blocks/Table/Table';
 
@@ -15,8 +14,8 @@ import './App.styl';
  */
 class App extends React.Component {
 
-    /**
-     * View
+	/**
+     * @see https://facebook.github.io/react/docs/rendering-elements.html
      */
 	render() {
 		return (

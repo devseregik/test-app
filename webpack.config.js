@@ -19,7 +19,7 @@ var config = {
 				exclude	: /node_modules/,
 				loader 	: 'babel-loader',
 				query	: {
-					presets	: ['es2015', 'react']
+					presets	: ['es2015', 'react', 'stage-0']
 				}
 			},
       		{
@@ -31,7 +31,14 @@ var config = {
 				loader     : 'json-loader'
       		}
 		]
-	}
+	},
+
+    plugins: [
+        new webpack.DefinePlugin({
+            'ENV_DEV'   : JSON.stringify(process.env.NODE_ENV == 'dev'),
+            'ENV_PROD'  : JSON.stringify(process.env.NODE_ENV == 'prod')
+        }),
+    ]
 
 };
 

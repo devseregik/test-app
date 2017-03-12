@@ -1,14 +1,17 @@
 // Dependencies
 import React from 'react';
 import { connect } from 'react-redux';
+import * as Semantic from 'semantic-ui-react'
 
 /**
- * Table class
+ * Table row class
+ *
+ * @extends React.Component
  */
 class Row extends React.Component {
 
-    /**
-     * View
+	/**
+     * @see https://facebook.github.io/react/docs/rendering-elements.html
      */
 	render() {
 		return (
@@ -23,7 +26,13 @@ class Row extends React.Component {
                     { this.props.film.year }
                 </td>
                 <td className="center aligned">
-                    <div className="ui star rating rating--disabled" data-rating={ this.props.film.rating } data-max-rating="5"></div>
+					<Semantic.Rating
+						className		= "rating__stars"
+						icon			= "star"
+						rating			= { this.props.film.rating }
+						maxRating		= { 5 }
+						disabled
+					/>
                 </td>
             </tr>
 		);

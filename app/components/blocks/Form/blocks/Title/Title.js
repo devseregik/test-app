@@ -1,39 +1,43 @@
 // Dependencies
 import React from 'react';
-import Formsy from 'formsy-react';
+import { HOC } from 'formsy-react';
 
-const Title = React.createClass({
-
-    mixins: [Formsy.Mixin],
+/**
+ * Title class
+ *
+ * @extends React.Component
+ */
+class Title extends React.Component {
 
     /**
-     * Change value into input
+     * Fired, when changed value into input
      *
-     * @param {Object} e Event
+     * @param {Event} e
      */
     onChange(e) {
-        this.setValue(e.target.value.trim());
-    },
+        this.props.setValue(e.target.value.trim());
+    }
 
     /**
-     * View
+     * @see https://facebook.github.io/react/docs/rendering-elements.html
      */
 	render() {
+        const errorClassName = this.props.getErrorMessage() ? 'error' : '';
+
 		return (
-            <div className={ this.getErrorMessage() ? 'field error' : 'field' }>
+            <div className={ 'field ' + errorClassName }>
                 <label>Название фильма</label>
                 <input
-                    type        = "text"
-                    name        = { this.props.name }
-                    placeholder = "Название фильма"
-                    onChange    = { this.onChange }
-
+                    type            = { this.props.type }
+                    value           = { this.props.getValue() || '' }
+                    name            = { this.props.name }
+                    placeholder     = "Название фильма"
+                    onChange        = { this.onChange.bind(this) }
                 />
-                <div>{ this.getErrorMessage() }</div>
+            <div className="field__error">{ this.props.getErrorMessage() }</div>
             </div>
 		);
 	}
+}
 
-});
-
-export default Title
+export default HOC(Title)
