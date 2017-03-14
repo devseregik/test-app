@@ -115,6 +115,8 @@ class Form extends React.Component {
 			>
 	            <h4 className="ui dividing header">Добавление фильма</h4>
 
+				<Fields.Poster />
+
 				<Fields.Title
 					name		= "title"
 					type 		= "text"

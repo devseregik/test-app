@@ -4,8 +4,8 @@ import path from 'path';
 import finalhandler from 'finalhandler';
 import serveStatic from 'serve-static';
 
-// Server up
-const serve = serveStatic(path.resolve(__dirname, 'public'));
+// Up server
+const serve = serveStatic(path.resolve(__dirname, '../public'));
 
 const server = http.createServer((req, res) => {
     const done = finalhandler(req, res);

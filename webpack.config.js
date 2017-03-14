@@ -1,11 +1,11 @@
 var
-    webpack     = require('webpack')
+    webpack     = require('webpack'),
     path        = require('path')
 ;
 
 var config = {
 
-    entry: './client.js',
+    entry: ['./client.js'],
 
     output  : {
         path        : path.resolve(__dirname, 'public'),
@@ -34,6 +34,8 @@ var config = {
 	},
 
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
             'ENV_DEV'   : JSON.stringify(process.env.NODE_ENV == 'dev'),
             'ENV_PROD'  : JSON.stringify(process.env.NODE_ENV == 'prod')
